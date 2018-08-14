@@ -1,23 +1,18 @@
 package com.tutorial.amritakumari.mvp.view
 
-import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import com.tutorial.amritakumari.mvp.presenter.IPresenter
 
-open abstract class BaseFragment<P : IPresenter<IView> > : Fragment(), IView {
+abstract class BaseActivity<P : IPresenter<*>> : AppCompatActivity(),IView {
 
     protected var mPresenter : P? = null
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         if(mPresenter == null){
             mPresenter = initializePresenter()
         }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         mPresenter?.onCreate(savedInstanceState)
     }
 

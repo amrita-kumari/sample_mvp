@@ -1,11 +1,9 @@
 package com.tutorial.amritakumari.mvp.presenter
 
 import android.os.Bundle
-import com.tutorial.amritakumari.mvp.view.IView
+import io.reactivex.disposables.Disposable
 
-interface IPresenter<V : IView> {
-
-    fun attachView(view : V)
+interface IPresenter<V> {
 
     fun onCreate(savedInstanceState : Bundle?)
 
@@ -20,4 +18,6 @@ interface IPresenter<V : IView> {
     fun onDestroy()
 
     fun dettachView()
+
+    fun addDisposable(disposable: Disposable)
 }

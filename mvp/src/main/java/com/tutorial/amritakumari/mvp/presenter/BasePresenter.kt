@@ -3,14 +3,10 @@ package com.tutorial.amritakumari.mvp.presenter
 import android.content.Context
 import android.os.Bundle
 import com.tutorial.amritakumari.mvp.view.IView
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 
-open class BasePresenter<V : IView>(protected val context: Context) : IPresenter<V> {
-
-    private  var mView: IView? = null
-
-    override fun attachView(view: V) {
-        mView = view
-    }
+open class BasePresenter<V : IView>(protected var mView: V?, protected var compositeDisposable: CompositeDisposable): IPresenter<V> {
 
     override fun onCreate(savedInstanceState: Bundle?) {
     }
@@ -32,6 +28,10 @@ open class BasePresenter<V : IView>(protected val context: Context) : IPresenter
 
     override fun dettachView() {
         mView = null
+        compositeDisposable.dispose()
     }
 
+    override fun addDisposable(disposable: Disposable) {
+        compositeDisposable.add(disposable)
+    }
 }
