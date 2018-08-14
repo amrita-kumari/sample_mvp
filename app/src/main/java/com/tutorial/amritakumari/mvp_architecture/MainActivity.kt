@@ -2,7 +2,7 @@ package com.tutorial.amritakumari.mvp_architecture
 
 import android.os.Bundle
 import android.view.View
-import com.tutorial.amritakumari.mvp.rx.Schedulers
+import com.tutorial.amritakumari.mvp.rx.SchedulerProvider
 import com.tutorial.amritakumari.mvp.view.BaseActivity
 import com.tutorial.amritakumari.mvp_architecture.data.DataGenerator
 import com.tutorial.amritakumari.mvp_architecture.data.DataRepository
@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity<ProductContract.Presenter<ProductContract.View>>(), ProductContract.View {
 
     override fun initializePresenter(): ProductContract.Presenter<ProductContract.View>
-            = ProductPresenter(this, CompositeDisposable(), Schedulers() ,DataRepository(DataGenerator()))
+            = ProductPresenter(this, CompositeDisposable(), SchedulerProvider() ,DataRepository(DataGenerator()))
 
     override fun displayProduct(product: String) {
         productName.text = product
