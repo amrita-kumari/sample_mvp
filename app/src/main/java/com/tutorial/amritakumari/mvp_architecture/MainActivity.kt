@@ -25,6 +25,10 @@ class MainActivity : BaseActivity<ProductContract.Presenter<ProductContract.View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        productName.text = getPackageManager()
+                .getPackageInfo(getPackageName(), 0).versionName
+        productReview.text = getPackageManager()
+                .getPackageInfo(getPackageName(), 0).versionCode.toString()
     }
 
     fun getProduct(view : View){
