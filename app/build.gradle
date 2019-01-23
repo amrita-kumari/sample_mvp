@@ -10,8 +10,6 @@ android {
         applicationId "com.tutorial.amritakumari.mvp_architecture"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 4
-        versionName "1.2.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
