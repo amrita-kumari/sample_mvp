@@ -4,17 +4,14 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
-def rawBuildNumber = System.getenv("BITRISE_BUILD_NUMBER") ?: "0"
-def buildNumber = Integer.parseInt(rawBuildNumber)
-
 android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.tutorial.amritakumari.mvp_architecture"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode buildNumber
-        versionName "1.2.$buildNumber"
+        versionCode 4
+        versionName "1.2.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
